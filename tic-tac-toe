@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+
+import sys, ttt_internals, computer_player, plain_text_player, plain_text_display
+
+board = None
+display = None
+player1 = None
+player2 = None
+
+if not board:
+        board = ttt_internals.Board()
+
+if len(sys.argv) > 1 and sys.argv[1] == '-T':
+        play_style = 'text'
+        player1 = plain_text_player.Player('Player 1', 'X', board)
+else:
+        play_style = 'pygame'
+        import pygame_player, pygame_display
+        player1 = pygame_player.Player('Player 1', 'X', board)
+
+if not player2:
+        player2 = computer_player.Player('Player 2', 'O', board)
+if not display:
+        if play_style == 'text':
+                display = plain_text_display.Display(board, player1, player2)
+        else:
+                display = pygame_display.Display(board, player1, player2)
+
+board.set_player1(player1)
+board.set_player2(player2)
+display.init()
+display.new_game()
+display.mainloop()
+
+sys.exit(0)
