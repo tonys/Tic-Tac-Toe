@@ -3,10 +3,10 @@ import ttt_internals, time, math
 class Player(ttt_internals.Player):
 
         def __init__(self, name, letter, game_board):
-                self.name = name
                 self.scorebd = {}
                 self.row_list = game_board.row_list
                 ttt_internals.Player.__init__(self, name, letter, game_board)
+                self.player_type = 'computer'
 
         def score_loc(self, loc, game_data):
 
@@ -76,8 +76,8 @@ class Player(ttt_internals.Player):
 
         def choose(self):
 
-                """ This simply performs sleep(2) (to simulate cognition) and
+                """ This simply performs sleep(1) (to simulate cognition) and
                 returns the result of the best_move() calculation.  """
 
-                time.sleep(2)
+                time.sleep(1)
                 return self.best_move()

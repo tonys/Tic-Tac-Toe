@@ -15,6 +15,16 @@ class Board(object):
                         [(0,0),(1,1),(2,2)],
                         [(2,0),(1,1),(0,2)],
                 ]
+                self.board_locs = [[] for i in range(10)]
+                self.board_locs[1] = (0, 0)
+                self.board_locs[2] = (0, 1)
+                self.board_locs[3] = (0, 2)
+                self.board_locs[4] = (1, 0)
+                self.board_locs[5] = (1, 1)
+                self.board_locs[6] = (1, 2)
+                self.board_locs[7] = (2, 0)
+                self.board_locs[8] = (2, 1)
+                self.board_locs[9] = (2, 2)
                 self.reset_data()
 
         def reset_data(self):
@@ -71,6 +81,7 @@ class Player(object):
         
         def __init__(self, name, letter, game_board):
                 self.name = name
+                self.player_type = 'human'
                 self.letter = letter
                 self.update_scorebd(game_board.data)
 
@@ -89,16 +100,17 @@ class Display(object):
                 self.board = board
                 self.player1 = player1
                 self.player2 = player2
+                self.active_player = self.player1
                 self.reset_choice = (-3,-3)
                 self.quit_choice = (-2,-2)
 
         def init(self):
                 pass
 
-        def update():
+        def update(self):
                 pass
 
-        def new_game():
+        def new_game(self):
                 pass
 
         def get_choice(self, player):
